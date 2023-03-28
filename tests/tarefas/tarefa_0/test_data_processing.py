@@ -44,7 +44,6 @@ class TestDataProcessing(unittest.TestCase):
 
         self.assertEqual(str(err.exception), 'titles cannot be negative', msg)
 
-
     def test_invalid_year_cup_error(self):
         """
         Testa se a funçao data_processing
