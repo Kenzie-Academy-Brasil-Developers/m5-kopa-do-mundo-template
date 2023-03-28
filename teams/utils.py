@@ -1,6 +1,6 @@
-from exceptions import NegativeTitlesError
-from exceptions import ImpossibleTitlesError
-from exceptions import InvalidYearCupError
+from teams.exceptions import NegativeTitlesError
+from teams.exceptions import ImpossibleTitlesError
+from teams.exceptions import InvalidYearCupError
 
 def data_processing(dict: dict):
     first_cup = 1930

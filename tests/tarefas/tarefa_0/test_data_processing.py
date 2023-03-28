@@ -1,6 +1,6 @@
 import unittest
-from utils import data_processing
-from exceptions import *
+from teams.utils import data_processing
+from teams.exceptions import *
 
 
 class TestDataProcessing(unittest.TestCase):
