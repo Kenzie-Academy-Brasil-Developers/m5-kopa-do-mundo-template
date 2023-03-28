@@ -1,5 +1,5 @@
 from datetime import datetime
-from exceptions import ImpossibleTitlesError, InvalidYearCupError 
+from exceptions import ImpossibleTitlesError, InvalidYearCupError
 from exceptions import NegativeTitlesError
 
 
@@ -11,7 +11,7 @@ def data_processing(infos_team):
     first_cup_year = int(infos_team["first_cup"][:4])
     if first_cup_year < 1930 or (first_cup_year - 1930) % 4 != 0:
         raise InvalidYearCupError()
-    
+
     number_titles = infos_team["titles"]
     now = datetime.now()
     ano = now.year
@@ -64,4 +64,3 @@ def data_processing(infos_team):
 
 # print(data_processing(data))
 # ImpossibleTitlesError: impossible to have more titles than disputed cups
-

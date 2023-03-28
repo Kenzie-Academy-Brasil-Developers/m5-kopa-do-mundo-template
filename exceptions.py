@@ -14,6 +14,3 @@ class ImpossibleTitlesError(Exception):
     def __init__(self):
         self.message = "impossible to have more titles than disputed cups"
         super().__init__(self.message)
-
-
-
