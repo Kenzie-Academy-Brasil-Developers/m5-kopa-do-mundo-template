@@ -7,8 +7,8 @@ from .exceptions import NegativeTitlesError, InvalidYearCupError, ImpossibleTitl
 
 class TeamView(APIView):
     def get(self, request):
-        teams = Team.objects.all()
         list_teams = []
+        teams = Team.objects.all()
         for team in teams:
             list_team_dict = model_to_dict(team)
             list_teams.append(list_team_dict)
@@ -26,4 +26,30 @@ class TeamView(APIView):
         new_team = Team.objects.create(**request.data)
         team_dict = model_to_dict(new_team)
         return Response(team_dict, status.HTTP_201_CREATED)
+    
+class TeamIdView(APIView):
+    def get(self, request, team_id):
+        try:
+            team = Team.objects.get(id = team_id)
+        except Team.DoesNotExist:
+            return Response({"message": "Team not found"}, status.HTTP_404_NOT_FOUND)
+        team_dict = model_to_dict(team)
+        return Response(team_dict, status.HTTP_200_OK)
+    
+    def patch(self, request, team_id):
+        team = Team.objects.filter(id = team_id)
+        if not team:
+            return Response({"message": "Team not found"}, status.HTTP_404_NOT_FOUND)
+        team.update(**request.data)
+        team_dict = model_to_dict(Team.objects.get(id = team_id))
+        return Response(team_dict, status.HTTP_200_OK)
+    
+    def delete(self, request, team_id):
+        try:
+            team = Team.objects.get(id = team_id)
+        except Team.DoesNotExist:
+            return Response({"message": "Team not found"}, status.HTTP_404_NOT_FOUND)
+        team.delete()
+        return Response(None, status.HTTP_204_NO_CONTENT)
+        
 
