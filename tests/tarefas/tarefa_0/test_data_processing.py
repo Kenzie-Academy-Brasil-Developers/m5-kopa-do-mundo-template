@@ -21,29 +21,28 @@ class TestDataProcessing(unittest.TestCase):
             "titles": -3,
             "top_scorer": "Zidane",
             "fifa_code": "FRA",
-            "first_cup": "2022-10-18"
+            "first_cup": "2022-10-18",
         }
         msg = self.base_msg % "levantando a mensagem de erro correta"
 
         with self.assertRaises(NegativeTitlesError) as err:
             data_processing(data)
 
-        self.assertEqual(str(err.exception), 'titles cannot be negative', msg)
+        self.assertEqual(str(err.exception), "titles cannot be negative", msg)
 
         data = {
             "name": "França",
             "titles": -1,
             "top_scorer": "Zidane",
             "fifa_code": "FRA",
-            "first_cup": "2018-10-18"
+            "first_cup": "2018-10-18",
         }
         msg = self.base_msg % "levantando a mensagem de erro correta"
 
         with self.assertRaises(NegativeTitlesError) as err:
             data_processing(data)
 
-        self.assertEqual(str(err.exception), 'titles cannot be negative', msg)
-
+        self.assertEqual(str(err.exception), "titles cannot be negative", msg)
 
     def test_invalid_year_cup_error(self):
         """
@@ -57,28 +56,27 @@ class TestDataProcessing(unittest.TestCase):
             "titles": 3,
             "top_scorer": "Zidane",
             "fifa_code": "FRA",
-            "first_cup": "1932-10-18"
+            "first_cup": "1932-10-18",
         }
         msg = self.base_msg % "levantando a mensagem de erro correta"
 
         with self.assertRaises(InvalidYearCupError) as err:
             data_processing(data)
 
-        self.assertEqual(str(err.exception), 'there was no world cup this year', msg)
+        self.assertEqual(str(err.exception), "there was no world cup this year", msg)
         data = {
             "name": "França",
             "titles": 3,
             "top_scorer": "Zidane",
             "fifa_code": "FRA",
-            "first_cup": "2023-10-18"
+            "first_cup": "2023-10-18",
         }
         msg = self.base_msg % "levantando a mensagem de erro correta"
 
         with self.assertRaises(InvalidYearCupError) as err:
             data_processing(data)
 
-        self.assertEqual(str(err.exception), 'there was no world cup this year', msg)
-
+        self.assertEqual(str(err.exception), "there was no world cup this year", msg)
 
     def test_impossible_titles_error(self):
         """
@@ -98,9 +96,11 @@ class TestDataProcessing(unittest.TestCase):
 
         with self.assertRaises(ImpossibleTitlesError) as err:
             data_processing(data)
-            self.assertIsInstance(err.exception, 'teste')
+            self.assertIsInstance(err.exception, "teste")
 
-        self.assertEqual(str(err.exception), 'impossible to have more titles than disputed cups', msg)
+        self.assertEqual(
+            str(err.exception), "impossible to have more titles than disputed cups", msg
+        )
 
         data = {
             "name": "França",
@@ -114,4 +114,6 @@ class TestDataProcessing(unittest.TestCase):
         with self.assertRaises(ImpossibleTitlesError) as err:
             data_processing(data)
 
-        self.assertEqual(str(err.exception), 'impossible to have more titles than disputed cups', msg)
+        self.assertEqual(
+            str(err.exception), "impossible to have more titles than disputed cups", msg
+        )
