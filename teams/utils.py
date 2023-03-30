@@ -1,4 +1,8 @@
-from exceptions import NegativeTitlesError, ImpossibleTitlesError, InvalidYearCupError
+from teams.exceptions import (
+    NegativeTitlesError,
+    ImpossibleTitlesError,
+    InvalidYearCupError,
+)
 
 
 def data_processing(data: dict):
@@ -18,5 +22,7 @@ def data_processing(data: dict):
 
     if (titles**4 % 4) != 0:
         raise InvalidYearCupError("there was no world cup this year")
-    if (titles**4 + first_cup_defined) > 2022:
+    if (titles**4 + first_cup_defined) > 2022 or (
+        titles**4 - first_coup_rec
+    ) < first_cup_defined:
         raise ImpossibleTitlesError("impossible to have more titles than disputed cups")
