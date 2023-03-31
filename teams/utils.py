@@ -1,5 +1,5 @@
 from datetime import datetime as dt
-from exceptions import NegativeTitlesError, InvalidYearCupError, ImpossibleTitlesError
+from .exceptions import NegativeTitlesError, InvalidYearCupError, ImpossibleTitlesError
 
 
 def data_processing(teams: dict):
@@ -21,13 +21,3 @@ def data_processing(teams: dict):
 
     return teams
 
-
-data = {
-    "name": "França",
-    "titles": 3,
-    "top_scorer": "Zidane",
-    "fifa_code": "FRA",
-    "first_cup": "1934-10-18",
-}
-
-print(data_processing(data))

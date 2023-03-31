@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ),
                 ("name", models.CharField(max_length=30)),
                 ("titles", models.IntegerField(blank=True, default=0)),
-                ("top_soccer", models.CharField(max_length=50)),
+                ("top_scorer", models.CharField(max_length=50)),
                 ("fifa_code", models.CharField(max_length=3, unique=True)),
                 ("first_cup", models.DateField(blank=True)),
             ],

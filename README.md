@@ -53,7 +53,7 @@ A partir de agora, para os testes das tarefas 1, 2 e 3, já que começaremos a u
 
 ```python
 [pytest]
-DJANGO_SETTINGS_MODULE = <nome_do_projeto>.settings
+DJANGO_SETTINGS_MODULE = <kopa_do_mundo>.settings
 ```
 
 **IMPORTANTE**:  Troque <nome_do_projeto> para o nome do pacote onde fica o arquivo settings.py do projeto Django.

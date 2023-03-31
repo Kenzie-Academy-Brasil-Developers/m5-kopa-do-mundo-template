@@ -10,4 +10,4 @@ class InvalidYearCupError(Exception):
 
 class ImpossibleTitlesError(Exception):
     def __init__(self, message):
-        self.messagem = message
+        self.message = message
