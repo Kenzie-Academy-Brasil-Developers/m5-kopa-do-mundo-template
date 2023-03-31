@@ -1,5 +1,6 @@
-from exceptions import ImpossibleTitlesError, InvalidYearCupError, NegativeTitlesError
+from .exceptions import ImpossibleTitlesError, InvalidYearCupError, NegativeTitlesError
 from datetime import datetime as dt
+from rest_framework.views import Response
 
 
 def data_processing(selection_infos):
