@@ -23,9 +23,13 @@ def data_processing(selection_infos):
         raise InvalidYearCupError("there was no world cup this year")
 
     possible_cup_participations = len(cup_years) - cup_years.index(int(first_cup_year))
-    if possible_cup_participations == 0 | possible_cup_participations < selection_infos["titles"]:
+    if (
+        possible_cup_participations
+        == 0 | possible_cup_participations
+        < selection_infos["titles"]
+    ):
         raise ImpossibleTitlesError("impossible to have more titles than disputed cups")
 
 
-if __name__ == '__main__':
+if __name__ == "__utils__":
     data_processing()
