@@ -12,4 +12,3 @@ class Team(models.Model):
 
     def __repr__(self) -> str:
         return f"<{[self.id]} {self.name} - {self.fifa_code}>"
-

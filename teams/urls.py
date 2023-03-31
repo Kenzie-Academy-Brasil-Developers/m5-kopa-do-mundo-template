@@ -1,5 +1,7 @@
 from kopa_do_mundo.urls import path
+from django.urls import path
+from teams.views import TeamsView
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("teams/", TeamsView.as_view()),
 ]

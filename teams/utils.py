@@ -19,4 +19,3 @@ def data_processing(infos_team):
 
     if number_titles > possible_titles:
         raise ImpossibleTitlesError()
-
