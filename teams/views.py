@@ -26,16 +26,51 @@ class TeamsView(APIView):
     
     def post(self, request: Request) -> Response:
         try:
-            print(data_processing(request.data))
+            data_processing(request.data)
             team = Team.objects.create(**request.data)
             team_dict = model_to_dict(team)
             return Response(team_dict, status.HTTP_201_CREATED)
         except InvalidYearCupError as e:
-            return Response({"error": str(e)}, status.HTTP_400_BAD_REQUEST)
+            return Response({"message": str(e)}, status.HTTP_400_BAD_REQUEST)
         except NegativeTitlesError as e:
-            return Response({"error": str(e)}, status.HTTP_400_BAD_REQUEST)
+            return Response({"message": str(e)}, status.HTTP_400_BAD_REQUEST)
         except ImpossibleTitlesError as e:
-            return Response({"error": str(e)}, status.HTTP_400_BAD_REQUEST)
+            return Response({"message": str(e)}, status.HTTP_400_BAD_REQUEST)
     # def delete(self, request: Request):
 
+
+class TeamDetailView(APIView):
+    def get(self, request: Request, team_id) -> Response:
+        try: 
+            team = Team.objects.get(id=team_id)
+            team_dict = model_to_dict(team)
+            return Response(team_dict)
+    
+        except Team.DoesNotExist:
+            return Response({"message": "Team not found"}, 
+                            status.HTTP_404_NOT_FOUND)
         
+    def patch(self, request: Request, team_id) -> Response:
+        try:
+            team = Team.objects.get(id=team_id)
+            for key, value in request.data.items():
+                setattr(team, key, value)
+            team.save()
+            team_dict = model_to_dict(team)
+            return Response(team_dict, status.HTTP_200_OK)
+        except Team.DoesNotExist:
+            return Response({"message": "Team not found"}, 
+                            status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"message": str(e)}, status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request: Request, team_id) -> Response:
+        try:
+            team = Team.objects.get(id=team_id)
+            team.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Team.DoesNotExist:
+            return Response({"message": "Team not found"}, 
+                            status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"message": str(e)}, status.HTTP_400_BAD_REQUEST)
