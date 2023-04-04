@@ -12,7 +12,7 @@ def data_processing(data):
     current_year = 2023
 
     if type(data) is not dict:
-        raise TypeError({"error": "data must be a dict"})
+        raise TypeError("data must be a dict")
 
     if titles < 0:
         raise NegativeTitlesError("titles cannot be negative")
