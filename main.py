@@ -7,7 +7,7 @@ def main():
         "titles": -3,
         "top_scorer": "Zidane",
         "fifa_code": "FRA",
-        "first_cup": "2000-10-18"
+        "first_cup": "2000-10-18",
     }
 
     # print(data_processing(data))
@@ -17,7 +17,7 @@ def main():
         "titles": 3,
         "top_scorer": "Zidane",
         "fifa_code": "FRA",
-        "first_cup": "1911-10-18"
+        "first_cup": "1911-10-18",
     }
 
     # print(data_processing(data))
@@ -27,7 +27,7 @@ def main():
         "titles": 3,
         "top_scorer": "Zidane",
         "fifa_code": "FRA",
-        "first_cup": "1932-10-18"
+        "first_cup": "1932-10-18",
     }
 
     # print(data_processing(data))
