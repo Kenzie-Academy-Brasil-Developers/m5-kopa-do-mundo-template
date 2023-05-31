@@ -175,6 +175,7 @@ pyrightconfig.json
 
 ### VisualStudioCode ###
 .vscode/*
+.vscode
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -206,3 +207,7 @@ pyvenv.cfg
 .venv
 venv
 pip-selfcheck.json
+
+### SqLite3 ###
+
+db.sqlite3
