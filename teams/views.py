@@ -21,7 +21,7 @@ class TeamView(APIView):
         teams = Team.objects.all()
         teams_dict = [model_to_dict(team) for team in teams]
 
-        return Response(teams_dict)
+        return Response(teams_dict, status.HTTP_200_OK)
 
 
 class TeamDetailView(APIView):
@@ -33,7 +33,7 @@ class TeamDetailView(APIView):
 
         team_dict = model_to_dict(team)
 
-        return Response(team_dict)
+        return Response(team_dict, status.HTTP_200_OK)
 
     def patch(self, request: Request, team_id: int) -> Response:
         try:
