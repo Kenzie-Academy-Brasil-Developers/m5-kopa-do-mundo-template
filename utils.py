@@ -24,21 +24,3 @@ def data_processing(selection: dict) -> None:
 
     is_world_cup_year(selection["first_cup"])
     verify_titles(selection)
-
-
-data = {
-    "name": "França",
-    "titles": 9,
-    "top_scorer": "Zidane",
-    "fifa_code": "FRA",
-    "first_cup": "2002-10-18",
-}
-
-
-def main():
-    print(data_processing(data))
-    ...
-
-
-if __name__ == "__main__":
-    main()
