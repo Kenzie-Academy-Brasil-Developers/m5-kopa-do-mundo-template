@@ -11,7 +11,11 @@ def data_processing(data):
 
     first_cup_year = datetime.strptime(first_cup, "%Y-%m-%d").year
     current_year = datetime.now().year
-    if first_cup_year < 1930 or first_cup_year > current_year or (first_cup_year - 1930) % 4 != 0:
+    if (
+        first_cup_year < 1930
+        or first_cup_year > current_year
+        or (first_cup_year - 1930) % 4 != 0
+    ):
         raise InvalidYearCupError()
 
     max_possible_titles = (current_year - first_cup_year) / 4
