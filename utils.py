@@ -1,5 +1,5 @@
 from exceptions import NegativeTitlesError, InvalidYearCupError, ImpossibleTitlesError
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 def data_processing(country: dict):
