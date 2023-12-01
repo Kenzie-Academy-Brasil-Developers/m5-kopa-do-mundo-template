@@ -19,3 +19,9 @@ class TeamView(APIView):
         ) as err:
             return Response({"error": err.args[0]}, status.HTTP_400_BAD_REQUEST)
 
+    def get(self, request: Request) -> Response:
+        teams = Team.objects.all()
+        converted_teams = [model_to_dict(team) for team in teams]
+        return Response(converted_teams)
+
+
